@@ -7,20 +7,6 @@
     @apply bg-sl-wave bg-cover bg-no-repeat bg-center h-dvh;
   }
 
-  .page-wrapper {
-    @apply absolute left-0 right-0 bottom-0 mx-6 mb-6;
-  }
-}
-
-@layer components {
-  .signup-wrapper {
-    @apply flex flex-col justify-center px-6 py-[4.5rem] rounded-[2.5rem] bg-white;
-  }
-
-  .text-wrapper {
-    @apply mb-6;
-  }
-
   h1 {
     @apply text-heading mb-3;
   }
@@ -39,5 +25,19 @@
 
   button {
     @apply absolute top-0 bottom-0 right-0 bg-black text-base leading-6 text-white py-0 px-4 rounded-3xl my-2 mr-2;
+  }
+}
+
+@layer components {
+  .page-wrapper {
+    @apply absolute left-0 right-0 bottom-0 mx-6 mb-6;
+  }
+
+  .signup-wrapper {
+    @apply flex flex-col justify-center px-6 py-[4.5rem] rounded-[2.5rem] bg-white;
+  }
+
+  .text-wrapper {
+    @apply mb-6;
   }
 }
