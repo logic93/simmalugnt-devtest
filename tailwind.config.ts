@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "sl-wave": "url('./assets/images/SL_BG_WAVE_2.gif')",
+      },
       spacing: {
         "4.5rem": "4.5rem",
       },
