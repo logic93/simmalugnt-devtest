@@ -11,7 +11,9 @@ export default function Home() {
     try {
       await formAction(formData);
     } catch (error) {
-      setState(error?.message);
+      if (error instanceof Error) {
+        setState(error?.message);
+      }
     }
   }
 

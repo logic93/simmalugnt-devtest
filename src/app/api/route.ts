@@ -15,6 +15,8 @@ export async function POST(formData: FormData) {
     // TODO
   } catch (error) {
     // TODO
-    throw new Error(error?.message);
+    if (error instanceof Error) {
+      throw new Error(error?.message);
+    }
   }
 }
