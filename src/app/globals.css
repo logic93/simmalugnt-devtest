@@ -7,9 +7,8 @@
 :root {
   --color-primary: #fff;
   --color-secondary: #000;
-  --color-buttons: #000;
-  --color-buttons-typography: #fff;
-  --color-placeholder: #000;
+  --color-buttons-typography: var(--color-primary);
+  --color-placeholder: var(--color-secondary);
 }
 
 @layer base {
@@ -34,7 +33,7 @@
   }
 
   button {
-    @apply absolute top-0 bottom-0 right-0 text-base leading-6 text-white py-0 px-4 rounded-3xl my-2 mr-2;
+    @apply absolute top-0 bottom-0 right-0 text-base leading-6 text-white rounded-3xl my-2 mr-2 truncate px-4 tracking-[-0.03em] transition-all;
   }
 
   .signup-wrapper {
@@ -43,7 +42,7 @@
   }
 
   button {
-    background-color: var(--color-buttons);
+    background-color: var(--color-secondary);
     color: var(--color-buttons-typography);
   }
 }
@@ -54,7 +53,7 @@
   }
 
   .signup-wrapper {
-    @apply flex flex-col justify-center px-6 py-[4.5rem] rounded-[2.5rem] transition-all ease-out;
+    @apply flex flex-col justify-center px-6 py-[4.5rem] rounded-[2.5rem] transition-colors;
   }
 
   .text-wrapper {

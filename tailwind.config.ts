@@ -20,6 +20,18 @@ const config: Config = {
       spacing: {
         "4.5rem": "4.5rem",
       },
+      width: {
+        "5.3rem": "5.3rem",
+        "7.4rem": "7.4rem",
+        "7.7rem": "7.7rem",
+      },
+      letterSpacing: {
+        "-0.03em": "-0.03em",
+      },
+      padding: {
+        "6.5rem": "6.5rem",
+        "8.8rem": "8.8rem",
+      },
       borderRadius: {
         "2.5rem": "2.5rem",
       },
@@ -38,7 +50,7 @@ const config: Config = {
           "2.5rem",
           {
             lineHeight: "3rem",
-            letterSpacing: "-0.03rem",
+            letterSpacing: "-0.03em",
             fontWeight: "700",
           },
         ],
@@ -46,7 +58,7 @@ const config: Config = {
           "1.5rem",
           {
             lineHeight: "2rem",
-            letterSpacing: "-0.03rem",
+            letterSpacing: "-0.03em",
             fontWeight: "700",
           },
         ],
