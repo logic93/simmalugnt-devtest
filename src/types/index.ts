@@ -1,14 +1,26 @@
+import { States } from "@/config/enums";
 import { ReactNode } from "react";
 
-export type Card = {
-  status: string;
-};
+export interface ICard {
+  state?: string;
+  children: ReactNode;
+}
 
-export type Newsletter = {
+export interface IForm {
   action: any;
-};
+  onChange?: any;
+  className?: any;
+  children: ReactNode;
+}
 
-export type Button = {
-  pendingTitle: string;
-  buttonTitle: ReactNode;
+export interface IButton {
+  buttonTitle: string;
+  pendingTitle?: string;
+  className?: any;
+  onClick?: any;
+  disabled?: boolean;
+}
+
+export type StatesType = {
+  [key in States]?: string;
 };
