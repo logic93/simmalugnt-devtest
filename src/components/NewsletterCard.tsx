@@ -1,18 +1,10 @@
 "use client";
 
-import { NewsletterForm } from "@/components/NewsletterForm";
-import { Card, Button, Newsletter } from "@/types";
+import { ICard } from "@/types";
 
-type Props = Card & Newsletter & Button;
-
-export function NewsletterCard({
-  status,
-  action,
-  pendingTitle,
-  buttonTitle,
-}: Props) {
+export function NewsletterCard(props: ICard) {
   return (
-    <div className="signup-wrapper" data-theme={status}>
+    <div className="signup-wrapper" data-theme={props.state}>
       <div className="text-wrapper">
         <h1>Sign up to our newsletter</h1>
         <p>
@@ -20,11 +12,7 @@ export function NewsletterCard({
           purus magna, eget lacinia sapien hendrerit.
         </p>
       </div>
-      <NewsletterForm
-        action={action}
-        pendingTitle={pendingTitle}
-        buttonTitle={buttonTitle}
-      />
+      {props.children}
     </div>
   );
 }

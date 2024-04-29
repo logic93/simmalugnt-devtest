@@ -1,23 +1,22 @@
 "use client";
 
-import { Submit } from "./Submit";
-import { Button, Newsletter } from "@/types";
+import { IForm } from "@/types";
 
-type Props = Newsletter & Button;
-
-export function NewsletterForm({ action, pendingTitle, buttonTitle }: Props) {
+export function NewsletterForm(props: IForm) {
   return (
-    <form action={action} noValidate>
+    <form action={props.action} noValidate>
       <label className="hidden" htmlFor="email" />
       <input
+        className={props.className}
         type="email"
         id="email"
         name="email"
         required
         data-1p-ignore
         placeholder="Email"
+        onChange={props.onChange}
       />
-      <Submit pendingTitle={pendingTitle} buttonTitle={buttonTitle} />
+      {props.children}
     </form>
   );
 }
