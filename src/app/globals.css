@@ -2,18 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "@/styles/themes.css";
-
 :root {
   --color-primary: #fff;
   --color-secondary: #000;
-  --color-buttons-typography: var(--color-primary);
-  --color-placeholder: var(--color-secondary);
+}
+
+.signup-wrapper[data-theme="base"] {
+  --color-primary: #fff;
+  --color-secondary: #000;
+}
+
+.signup-wrapper[data-theme="error"] {
+  --color-primary: #5a0000;
+  --color-secondary: #ff0000;
+}
+
+.signup-wrapper[data-theme="success"] {
+  --color-primary: #004006;
+  --color-secondary: #69ed76;
 }
 
 @layer base {
+  html {
+    @apply font-bold;
+  }
+
   body {
-    @apply bg-sl-wave bg-cover bg-no-repeat bg-center h-dvh sm:hidden;
+    @apply h-dvh bg-sl-wave bg-cover bg-no-repeat bg-center;
   }
 
   h1 {
@@ -29,31 +44,21 @@
   }
 
   input {
-    @apply outline-none text-2xl rounded-full border-4 border-solid pl-6 truncate w-full border-current bg-inherit;
+    @apply outline-none text-2xl tracking-[-0.03em]	rounded-full border-4 border-solid pl-6 truncate w-full border-current bg-inherit;
   }
 
   button {
-    @apply absolute top-0 bottom-0 right-0 text-base leading-6 text-white rounded-3xl my-2 mr-2 truncate px-4 tracking-[-0.03em] transition-all;
-  }
-
-  .signup-wrapper {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-  }
-
-  button {
-    background-color: var(--color-secondary);
-    color: var(--color-buttons-typography);
+    @apply absolute top-0 bottom-0 right-0 text-base leading-6 text-white rounded-3xl my-2 mr-2 truncate px-4 tracking-[-0.03em] transition-all bg-secondary text-primary;
   }
 }
 
 @layer components {
   .page-wrapper {
-    @apply absolute left-0 right-0 bottom-0 mx-6 mb-6;
+    @apply flex items-end h-full;
   }
 
   .signup-wrapper {
-    @apply flex flex-col justify-center px-6 py-[4.5rem] rounded-[2.5rem] transition-colors;
+    @apply flex flex-col justify-center mx-6 mb-6 px-6 py-[4.5rem] rounded-[2.5rem] transition-colors bg-primary text-secondary;
   }
 
   .text-wrapper {
@@ -62,8 +67,12 @@
 }
 
 @layer utilities {
+  body {
+    @apply sm:hidden;
+  }
+
   input::placeholder {
-    color: var(--color-placeholder);
+    @apply text-secondary;
   }
 
   button:disabled {
