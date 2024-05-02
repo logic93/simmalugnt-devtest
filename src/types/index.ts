@@ -17,7 +17,7 @@ export interface IButton {
   buttonTitle: string;
   pendingTitle?: string;
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: any;
   state?: string;
   setActiveState?: any;
   setIsPending?: (_: boolean) => void;
