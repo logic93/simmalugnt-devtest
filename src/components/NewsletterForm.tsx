@@ -7,7 +7,7 @@ export function NewsletterForm(props: IForm) {
     <form action={props.action} noValidate>
       <label className="hidden" htmlFor="email" />
       <input
-        className={props.className}
+        className={props.inputClassName}
         type="email"
         id="email"
         name="email"

@@ -1,3 +1,3 @@
 export const variables = {
-  SERVER_DELAY: 1000,
+  SERVER_DELAY: 500,
 };

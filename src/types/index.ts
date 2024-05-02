@@ -8,16 +8,19 @@ export interface ICard {
 
 export interface IForm {
   action: any;
-  onChange?: any;
-  className?: any;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  inputClassName?: string;
   children: ReactNode;
 }
 
 export interface IButton {
   buttonTitle: string;
   pendingTitle?: string;
-  className?: any;
-  onClick?: any;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  state?: string;
+  setActiveState?: any;
+  setIsPending?: (_: boolean) => void;
   disabled?: boolean;
 }
 

@@ -7,11 +7,6 @@
   --color-secondary: #000;
 }
 
-.signup-wrapper[data-theme="base"] {
-  --color-primary: #fff;
-  --color-secondary: #000;
-}
-
 .signup-wrapper[data-theme="error"] {
   --color-primary: #5a0000;
   --color-secondary: #ff0000;
