@@ -9,7 +9,6 @@ export function Submit(props: IButton) {
   const { pending } = useFormStatus();
   const {
     setActiveState,
-    setIsPending,
     state,
     disabled,
     className,
@@ -18,16 +17,14 @@ export function Submit(props: IButton) {
   } = props;
 
   useEffect(() => {
-    if (setActiveState && setIsPending && state) {
+    if (setActiveState && state) {
       if (pending) {
-        setActiveState(States.PENDING);
-        setIsPending(true);
+        setActiveState({ ...state, state: States.PENDING });
       } else {
         setActiveState(state);
-        setIsPending(false);
       }
     }
-  }, [pending, setActiveState, setIsPending, state]);
+  }, [pending, setActiveState, state]);
 
   return (
     <button type="submit" disabled={pending || disabled} className={className}>

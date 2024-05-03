@@ -1,6 +1,5 @@
 "use server";
 
-import { variables } from "@/config";
 import { States } from "@/config/enums";
 import z from "zod";
 
@@ -11,10 +10,13 @@ export async function onSignupNewsletter(prevState: any, formData: FormData) {
   const email = formData.get("email");
   const results = emailSchema.safeParse(email);
 
-  await new Promise((resolve) => setTimeout(resolve, variables.SERVER_DELAY));
+  await new Promise((resolve) => setTimeout(resolve, 500));
 
   if (!results.success) {
-    return States.ERROR;
+    return {
+      message: "",
+      state: States.ERROR,
+    };
   }
 
   if (results.success) {
@@ -29,13 +31,19 @@ export async function onSignupNewsletter(prevState: any, formData: FormData) {
         body: JSON.stringify({ email }),
       });
 
+      const data = await res.json();
+
       if (res.ok) {
-        return States.SUCCESS;
+        return {
+          message: data?.status,
+          state: States.SUCCESS,
+        };
       }
     } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
-      }
+      return {
+        message: "Something went wrong, please try again.",
+        state: States.API_ERROR,
+      };
     }
   }
 }

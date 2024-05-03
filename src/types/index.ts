@@ -17,10 +17,8 @@ export interface IButton {
   buttonTitle: string;
   pendingTitle?: string;
   className?: string;
-  onClick?: any;
-  state?: string;
+  state?: { message: string; state: string };
   setActiveState?: any;
-  setIsPending?: (_: boolean) => void;
   disabled?: boolean;
 }
 

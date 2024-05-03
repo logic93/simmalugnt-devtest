@@ -59,6 +59,14 @@
   .text-wrapper {
     @apply mb-6;
   }
+
+  .error-wrapper {
+    @apply fixed bottom-0 w-full z-10 pointer-events-none;
+  }
+
+  .error-toast {
+    @apply bg-[#ff0000] text-[#5a0000] px-4 py-2 transition-transform;
+  }
 }
 
 @layer utilities {

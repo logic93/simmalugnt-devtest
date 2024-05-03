@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NewsletterCard } from "@/components/NewsletterCard";
 import { onSignupNewsletter } from "@/actions";
 import { useFormState } from "react-dom";
@@ -15,19 +15,25 @@ const emailSchema = z.string().email();
 const buttonTitle: { [key: string]: string } = {
   [States.BASE]: "sign up",
   [States.ERROR]: "invalid email",
+  [States.API_ERROR]: "sign up",
   [States.SUCCESS]: "Thanks!",
 };
 
 export default function Home() {
-  const [state, formAction] = useFormState(onSignupNewsletter, States.BASE);
-  const [activeState, setActiveState] = useState<States | typeof state>(
-    States.BASE
-  );
-  const [_, setIsPending] = useState<boolean>(false);
+  const [state, formAction] = useFormState(onSignupNewsletter, {
+    message: "",
+    state: States.BASE,
+  });
+  const [activeState, setActiveState] = useState<typeof state>(state);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (state) {
       setActiveState(state);
+
+      if (state?.state === States.API_ERROR) {
+        formRef.current?.reset();
+      }
     }
   }, [state]);
 
@@ -35,13 +41,13 @@ export default function Home() {
     const email = e.target.value;
     const validation = emailSchema.safeParse(email);
 
-    if (state === States.ERROR) {
+    if (state?.state === States.ERROR) {
       if (validation.success) {
-        setActiveState(States.BASE);
+        setActiveState({ ...state, state: States.BASE });
       }
 
       if (!validation.success) {
-        setActiveState(States.ERROR);
+        setActiveState({ ...state, state: States.ERROR });
       }
     }
   }
@@ -61,23 +67,35 @@ export default function Home() {
 
   return (
     <div className="page-wrapper">
-      <NewsletterCard state={activeState}>
+      <NewsletterCard state={activeState?.state}>
         <NewsletterForm
-          inputClassName={`${inputPaddingVariants[activeState!]}`}
+          ref={formRef}
+          inputClassName={`${inputPaddingVariants[activeState?.state!]}`}
           action={formAction}
           onChange={handleChange}
         >
           <Submit
-            className={`${buttonWidthVariants[activeState!]}`}
-            disabled={activeState === States.SUCCESS}
+            className={`${buttonWidthVariants[activeState?.state!]}`}
+            disabled={activeState?.state === States.SUCCESS}
             pendingTitle="signing up..."
-            buttonTitle={buttonTitle[activeState!]}
+            buttonTitle={buttonTitle[activeState?.state!]}
             state={state}
             setActiveState={setActiveState}
-            setIsPending={setIsPending}
           />
         </NewsletterForm>
       </NewsletterCard>
+
+      <div className="error-wrapper">
+        <div
+          className={`error-toast ${
+            state?.state === States.API_ERROR
+              ? "translate-y-0"
+              : "translate-y-full"
+          }`}
+        >
+          {activeState?.message}
+        </div>
+      </div>
     </div>
   );
 }
