@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { NewsletterCard } from "@/components/NewsletterCard";
 import { onSignupNewsletter } from "@/actions";
-import { useFormState } from "react-dom";
-import { z } from "zod";
-import { States } from "@/config/enums";
+import { NewsletterCard } from "@/components/NewsletterCard";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { Submit } from "@/components/Submit";
-import { StatesType } from "@/types";
+import { States } from "@/config/enums";
+import { State, StatesMap } from "@/types";
+import { useEffect, useRef, useState } from "react";
+import { useFormState } from "react-dom";
+import { z } from "zod";
 
 const emailSchema = z.string().email();
 
@@ -24,7 +24,7 @@ export default function Home() {
     message: "",
     state: States.BASE,
   });
-  const [activeState, setActiveState] = useState<typeof state>(state);
+  const [activeState, setActiveState] = useState<State | typeof state>(state);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
@@ -52,14 +52,14 @@ export default function Home() {
     }
   }
 
-  const buttonWidthVariants: StatesType = {
+  const buttonWidthVariants: StatesMap = {
     [States.BASE]: "w-[5.3rem]",
     [States.PENDING]: "w-[7.4rem]",
     [States.ERROR]: "w-[7.7rem]",
     [States.SUCCESS]: "w-full m-0 disabled disabled:opacity-100",
   };
 
-  const inputPaddingVariants: StatesType = {
+  const inputPaddingVariants: StatesMap = {
     [States.BASE]: "pr-[calc(5.3rem+1.2rem)]",
     [States.PENDING]: "pr-[calc(7.4rem+1.2rem)]",
     [States.ERROR]: "pr-[calc(7.7rem+1.2rem)]",
@@ -70,15 +70,15 @@ export default function Home() {
       <NewsletterCard state={activeState?.state}>
         <NewsletterForm
           ref={formRef}
-          inputClassName={`${inputPaddingVariants[activeState?.state!]}`}
+          inputClassName={`${activeState?.state && inputPaddingVariants[activeState?.state as States]}`}
           action={formAction}
           onChange={handleChange}
         >
           <Submit
-            className={`${buttonWidthVariants[activeState?.state!]}`}
+            className={`${activeState?.state && buttonWidthVariants[activeState?.state as States]}`}
             disabled={activeState?.state === States.SUCCESS}
             pendingTitle="signing up..."
-            buttonTitle={buttonTitle[activeState?.state!]}
+            buttonTitle={buttonTitle[activeState?.state as States]}
             state={state}
             setActiveState={setActiveState}
           />

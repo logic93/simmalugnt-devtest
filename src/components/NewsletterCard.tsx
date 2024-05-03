@@ -1,8 +1,8 @@
 "use client";
 
-import { ICard } from "@/types";
+import { CardProps } from "@/types";
 
-export function NewsletterCard(props: ICard) {
+export function NewsletterCard(props: CardProps) {
   return (
     <div className="signup-wrapper" data-theme={props.state}>
       <div className="text-wrapper">

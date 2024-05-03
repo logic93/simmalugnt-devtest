@@ -23,11 +23,11 @@
   }
 
   body {
-    @apply h-dvh bg-sl-wave bg-cover bg-no-repeat bg-center;
+    @apply h-dvh bg-sl-wave bg-cover bg-center bg-no-repeat;
   }
 
   h1 {
-    @apply text-heading mb-3;
+    @apply mb-3 text-heading;
   }
 
   p {
@@ -35,25 +35,25 @@
   }
 
   form {
-    @apply flex relative h-12;
+    @apply relative flex h-12;
   }
 
   input {
-    @apply outline-none text-2xl tracking-[-0.03em]	rounded-full border-4 border-solid pl-6 truncate w-full border-current bg-inherit;
+    @apply w-full truncate rounded-full	border-4 border-solid border-current bg-inherit pl-6 text-2xl tracking-[-0.03em] outline-none;
   }
 
   button {
-    @apply absolute top-0 bottom-0 right-0 text-base leading-6 text-white rounded-3xl my-2 mr-2 truncate px-4 tracking-[-0.03em] transition-all bg-secondary text-primary;
+    @apply absolute bottom-0 right-0 top-0 my-2 mr-2 truncate rounded-3xl bg-secondary px-4 text-base leading-6 tracking-[-0.03em] text-primary text-white transition-all;
   }
 }
 
 @layer components {
   .page-wrapper {
-    @apply flex items-end h-full;
+    @apply flex h-full items-end;
   }
 
   .signup-wrapper {
-    @apply flex flex-col justify-center mx-6 mb-6 px-6 py-[4.5rem] rounded-[2.5rem] transition-colors bg-primary text-secondary;
+    @apply mx-6 mb-6 flex flex-col justify-center rounded-[2.5rem] bg-primary px-6 py-[4.5rem] text-secondary transition-colors;
   }
 
   .text-wrapper {
@@ -61,11 +61,11 @@
   }
 
   .error-wrapper {
-    @apply fixed bottom-0 w-full z-10 pointer-events-none;
+    @apply pointer-events-none fixed bottom-0 z-10 w-full;
   }
 
   .error-toast {
-    @apply bg-[#ff0000] text-[#5a0000] px-4 py-2 transition-transform;
+    @apply bg-[#ff0000] px-4 py-2 text-[#5a0000] transition-transform;
   }
 }
 

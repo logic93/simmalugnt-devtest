@@ -1,9 +1,9 @@
 "use client";
 
-import { IForm } from "@/types";
+import { FormProps } from "@/types";
 import { forwardRef } from "react";
 
-export const NewsletterForm = forwardRef<HTMLFormElement, IForm>(
+export const NewsletterForm = forwardRef<HTMLFormElement, FormProps>(
   (props, ref) => {
     const { action, inputClassName, onChange, children } = props;
 
@@ -23,7 +23,7 @@ export const NewsletterForm = forwardRef<HTMLFormElement, IForm>(
         {children}
       </form>
     );
-  }
+  },
 );
 
 NewsletterForm.displayName = "NewsletterForm";

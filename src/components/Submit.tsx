@@ -1,11 +1,11 @@
 "use client";
 
 import { States } from "@/config/enums";
-import { IButton } from "@/types";
+import { ButtonProps } from "@/types";
 import { useEffect } from "react";
 import { useFormStatus } from "react-dom";
 
-export function Submit(props: IButton) {
+export function Submit(props: ButtonProps) {
   const { pending } = useFormStatus();
   const {
     setActiveState,

@@ -1,27 +1,31 @@
 import { States } from "@/config/enums";
-import { ReactNode } from "react";
 
-export interface ICard {
+export interface CardProps {
   state?: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-export interface IForm {
+export interface FormProps {
   action: any;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   inputClassName?: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-export interface IButton {
-  buttonTitle: string;
+export interface ButtonProps {
+  buttonTitle?: string;
   pendingTitle?: string;
   className?: string;
-  state?: { message: string; state: string };
-  setActiveState?: any;
+  state?: State;
+  setActiveState?: (state?: State) => void;
   disabled?: boolean;
 }
 
-export type StatesType = {
+export interface State {
+  message?: string;
+  state?: string;
+}
+
+export type StatesMap = {
   [key in States]?: string;
 };
