@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import type { Viewport } from "next";
 
 const simmalugnt_sans = localFont({
   src: [
@@ -23,14 +22,14 @@ export const metadata: Metadata = {
   title: "Simma Lugnt | Newsletter",
   description: "Newsletter",
   appleWebApp: {
-    title: "SM Newsletter",
+    title: "SL Newsletter",
     statusBarStyle: "black-translucent",
   },
 };
 
 export const viewport: Viewport = {
   viewportFit: "cover",
-  themeColor: "#090A0B",
+  themeColor: "var(--theme-color)",
 };
 
 export default function RootLayout({

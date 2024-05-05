@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
+        "theme-color": "var(--theme-color)",
       },
       backgroundImage: {
         "sl-wave": "url('./assets/images/SL_BG_WAVE_2.gif')",

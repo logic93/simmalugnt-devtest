@@ -5,6 +5,7 @@
 :root {
   --color-primary: #fff;
   --color-secondary: #000;
+  --theme-color: #090a0b;
 }
 
 .signup-wrapper[data-theme="error"] {
@@ -19,11 +20,13 @@
 
 @layer base {
   html {
-    @apply font-bold;
+    height: calc(100% + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
 
   body {
-    @apply h-dvh bg-sl-wave bg-cover bg-center bg-no-repeat;
+    @apply bg-theme-color h-full bg-sl-wave bg-cover bg-center bg-no-repeat font-bold;
   }
 
   h1 {
@@ -43,7 +46,7 @@
   }
 
   button {
-    @apply absolute bottom-0 right-0 top-0 my-2 mr-2 truncate rounded-3xl bg-secondary px-4 text-base leading-6 tracking-[-0.03em] text-primary text-white transition-all;
+    @apply absolute bottom-0 right-0 top-0 my-2 mr-2 truncate rounded-3xl bg-secondary px-4 text-base leading-6 tracking-[-0.03em] text-primary transition-all;
   }
 }
 
@@ -53,7 +56,7 @@
   }
 
   .signup-wrapper {
-    @apply mx-6 mb-6 flex flex-col justify-center rounded-[2.5rem] bg-primary px-6 py-[4.5rem] text-secondary transition-colors;
+    @apply mx-6 mb-6 rounded-[2.5rem] bg-primary px-6 py-[4.5rem] text-secondary transition-colors;
   }
 
   .text-wrapper {
